@@ -1,47 +1,54 @@
 <template>
-    <swiper
-    :navigation="true"
-    :modules="modules"
+  <swiper
+    :slidesPerView="1"
+    :spaceBetween="30"
     :loop="true"
     :pagination="{
       clickable: true,
     }"
+    :navigation="true"
+    :modules="modules"
     class="mySwiper"
-    >
-        <swiper-slide
-        v-for="(item) in swiperView"
-        :key="item"
-        >
-            <div class="videoWrap">
-                <div class="row">
-                    <div class="col-6 text">
-                        <h2 v-html="item.mainTitle"></h2>
-                    </div>
-                    <div class="col-6">
-                        <video
-                            :src="`images/01mainSlide_video/${item.src}`"
-                            autoplay
-                            muted
-                            loop
-                            class=""
-                        ></video>
-                    </div>
-                </div>
+  >
+    <swiper-slide v-for="(item, i) in swiperView" :key="i">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 position-relative">
+            <div class="sFontWrap">
+              <h2 v-html="item.mainTitle"></h2>
+              <p v-html="item.subtitle"></p>
             </div>
-        </swiper-slide>
-    </swiper>
+            <div class="vBtn">
+              <p>자세히 보기</p>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+          </div>
+          <div class="col-md-6 videos">
+            <video
+              :src="`images/01mainSlide_video/${item.mVideo}`"
+              autoplay
+              muted
+              loop
+              class=""
+            ></video>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper>
 </template>
-
 <script>
+// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import { Pagination } from "swiper";
-
 import sData from "@/data/01mainSlide.js";
+// Import Swiper styles
+import "swiper/css";
+
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
 
 export default {
   components: {
@@ -50,7 +57,7 @@ export default {
   },
   setup() {
     return {
-      modules: [Navigation, Pagination],
+      modules: [Pagination, Navigation],
       swiperView: sData,
     };
   },
@@ -58,16 +65,42 @@ export default {
 </script>
 
 <style lang="scss">
-.mySwiper{
-    swiper-slide{
-        height: 400px;
-        .videoWrap {
-          overflow: hidden;
-          background-color: #e1eff2;
-          video {
-            width: 100%;
-          }
-        }
+.mySwiper {
+  background-color: #e1eff2;
+  .swiper-slide {
+    height: 700px;
+    .sFontWrap{
+      margin-top: 40%;z-index: 1111px;
+      h2{font-size: 50px;color: #285E76;margin-bottom: 20px;}
+      p{font-size: 18px;color: #285E76;font-weight: bold;}
     }
+    .vBtn{
+      display: flex;margin-bottom: 0 !important;
+      background: #fff;width: 200px;height: 70px;border-radius: 20px;
+      p{
+        margin-right: 10px;
+      }
+      i{
+        line-height: 1.5 !important;
+      }
+      }
+    .videos {
+      height: 700px;
+      display: flex;justify-content: center;align-items: center;
+      background-color: #e1eff2;
+      video {
+        height: 700px;
+      }
+    }
+  }
+  .swiper-button-prev{
+    position: absolute;left: 16%;top: 90%;transform: scale(0.4);
+  }
+  .swiper-button-next{
+    position: absolute;left: 20%;top: 90%;transform: scale(0.4);
+  }
+  .swiper-pagination-horizontal{
+    position: absolute;left: -31.5%;bottom: 8%;
+  }
 }
 </style>
