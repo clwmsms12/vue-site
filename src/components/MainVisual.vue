@@ -70,15 +70,17 @@ export default {
   .swiper-slide {
     height: 700px;
     .sFontWrap{
-      margin-top: 40%;z-index: 1111px;
+      margin-top: 32%;z-index: 1111px;margin-bottom: 30px;
       h2{font-size: 50px;color: #285E76;margin-bottom: 20px;}
       p{font-size: 18px;color: #285E76;font-weight: bold;}
     }
     .vBtn{
-      display: flex;margin-bottom: 0 !important;
-      background: #fff;width: 200px;height: 70px;border-radius: 20px;
+      display: flex;margin-bottom: 0 !important;justify-content: space-around;align-items: center;
+      background: #fff;width: 200px;height: 60px;border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);cursor: pointer;
       p{
-        margin-right: 10px;
+        margin-right: 10px;margin-bottom: 0 !important;
+        font-weight: bold;
       }
       i{
         line-height: 1.5 !important;
