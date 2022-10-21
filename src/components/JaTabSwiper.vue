@@ -1,13 +1,20 @@
 <template>
-  <swiper :navigation="true" :modules="modules" class="mySwiper">
+  <swiper :navigation="true" :modules="modules" class="mySwiper1">
     <swiper-slide v-for="item in edu" :key="item" class="container">
-        <h2 v-html="item.title"></h2>
-        <p v-html="item.subtitle"></p>
-        <img :src="`images/03eduProgram/${item.src}`" alt="">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 v-html="item.title"></h2>
+            <p v-html="item.subtitle"></p>
+            <div class="btn2">
+              <p>자세히 보기</p>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img :src="`images/03eduProgram/${item.src}`" alt="">
+          </div>
+        </div>
     </swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 4</swiper-slide>
   </swiper>
 </template>
 
@@ -40,10 +47,23 @@ export default {
 </script>
 
 <style lang="scss">
-    .mySwiper{
+    .mySwiper1{
+      background: skyblue;padding: 50px 0;
+      .swiper-wrapper{}
         .container{
             left: 50%;transform: translateX(-50%);
-            h2{font-weight: bold;}
+            h2{font-weight: bold;margin-bottom: 20px;}
+            img{height: 362px;}
+            p{margin-bottom: 80px;font-size: 18px;}
+            .btn2{
+              display: flex;margin-bottom: 0 !important;justify-content: space-around;align-items: center;
+              background: #fff;width: 200px;height: 60px;border-radius: 30px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);cursor: pointer;
+              p{
+                margin-right: 10px;margin-bottom: 0 !important;
+                font-weight: bold;
+              }
+            }
         }
     }
 </style>
